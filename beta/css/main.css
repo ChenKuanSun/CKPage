@@ -1,0 +1,72 @@
+/*頁面內容*/
+    /*頁面內容樣式*/
+        .banner{
+            height: 800px;
+            padding: 100px 0px 100px;
+            background-image: url(../images/1.jpg);
+            background-position: center center;
+            background-size: cover;
+            text-align: center;
+        }
+        .mainti{
+            font-size: 72px;
+            font-weight: 600;
+            color: #FFF;
+        }
+        .maincon{
+            margin: 0;
+            font-size: 30px;
+        }
+    /*主選單位置*/
+        .button{
+            margin: 0 auto;
+            height: 400px;
+            width: 710px;
+        }
+    /*主選單外框*/
+        .frame{
+            margin-top: 45px;
+            margin-left: 5%;
+            padding: 20px;
+            height: 300px;
+            width: 200px;
+            display: inline-block;
+            border-style: solid;
+            border-width: 3px;
+            background-color: rgba(255,255,255,0.1);
+            color : #FFF;
+            cursor: pointer;
+            float: left;        
+        }
+        .frame:hover{
+            background-color: rgba(255,255,255,0.6);
+            color : #232321;
+        }
+    /*主選單的按鈕樣式*/
+        .b1{
+            margin: 0 auto;
+            text-align: center;
+            height: 100px;
+            width: 100px;
+            border-radius: 50px;
+            color: #232321;
+            line-height: 100px;
+            font-size:50px;
+        }
+    /*主選單的按鈕顏色*/
+        .frame:nth-child(1) .b1{
+            background-color: #6199E2;
+        }
+        .frame:nth-child(2) .b1{
+            background-color: #94C82B;
+        }
+        .frame:nth-child(3) .b1{
+            background-color: #F06C73;
+        }
+    /*主選單的說明顏色*/
+        .frame p{
+            font-size: 20px;
+            line-height:20px;
+            letter-spacing: 1px;
+            padding: 1px;
+        }

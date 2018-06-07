@@ -1,0 +1,51 @@
+/*頁面內容*/
+	/*背景*/
+		textarea {
+		    border-color: #bbf743;
+		}
+		.banner{
+			background-color: #94C82B;
+		}
+		.backfont{
+			left:0px;
+			color: #90B740;
+		}
+	/*主框說明樣式*/
+		h3{
+			color: #507700;
+		}
+	/*主框內容樣式*/
+		.dateframe{
+			border-color: #bbf743;
+			width: 280px;
+		}
+		.resframe{
+			position: relative;
+			margin: 0 auto;
+			width: 670px;
+			height: 150px;
+			left: 50px;
+		}
+		.resframe div{
+			margin: 2px;
+			float: left;
+		}
+		.yearframe{
+			border-color: #bbf743;
+		}
+		.btframe :nth-child(2){
+			color: #507700;
+		}
+		.btframe .dateframe:hover{
+            background-color: rgba(80,119,0,0.6);
+            color : #FFF;
+        }
+/*資訊版樣式*/
+	.infoframe{
+		border-color: #bbf743;
+		background-color: #94C82B;
+		color : #507700;
+	}
+	.infoframe textarea{
+		color: #507700;
+	}
