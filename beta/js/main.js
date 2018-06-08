@@ -745,3 +745,12 @@ function study(){/*留職計算機主程式*/
         $(this).stop(true).animate({opacity: 0,zIndex: 0}, 1);
     });
 }
+$(function () {
+        $("#checklist").click(function () {
+            if ($(this).is(":checked")) {
+                $("#train_list").show();
+            } else {
+                $("#train_list").hide();
+            }
+        });
+    });

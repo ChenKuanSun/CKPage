@@ -42,12 +42,16 @@
 	    		<input id="date_specialbreak" class='form-control' type="text" placeholder="請輸入想計算哪一年的慰勞假天數。">
 	    	</div>
 	    	<div class="form-group">
-	    		<label for="date" class="col-form-label">請輸入受訓日期</label>
-		    		<div class="form-group input-group input-daterange">
-					    <input id="tranning_start" type="text" class="form-control mr-sm-2" value="開訓日">
+	    		<input id="checklist" type="checkbox">
+	    		<label for="checkbox" class="col-form-label">前一年度有受訓請勾選</label>
+	    	</div>
+	    	<div id="train_list" class="form-group" style="display: none">
+	    		<label for="date" class="col-form-label">請輸入受訓日期，輸入完請按增加</label>
+		    		<div class="form-group input-group input-daterange" >
+					    <input id="tranning_start" type="text" class="form-control mr-sm-2" value="開訓日" >
 					    <input id="tranning_end" type="text" class="form-control" value="結訓日">
 					</div>
-	    		<button id="add_trainning_id" type="button" class="btn btn-success mb-3" onclick="add_trainning()">增加受訓日
+	    		<button id="add_trainning_id" type="button" class="btn btn-success mb-3" onclick="add_trainning()">增加訓期
 	    		</button>
 	    		<div id="trainning_list" class="form-group"></div>
 	    	</div>
