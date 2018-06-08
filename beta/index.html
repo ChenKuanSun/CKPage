@@ -8,12 +8,6 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <style type="text/css">
-    	@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
-		* {
-		    font-family: 'Noto Sans TC';
-		}
-    </style>
     <title>休假參考計算機</title>
   </head>
   <body>
@@ -28,10 +22,10 @@
   					<a href="#" class="nav-link">一般使用者</a>
   				</li>
   				<li class="nav-item">
-  					<a href="#" class="nav-link">再入營者適用</a>
+  					<a href="#" class="nav-link" onclick="alert('改版中，請稍待!!')">再入營者適用</a>
   				</li>
   				<li class="nav-item">
-  					<a href="#" class="nav-link">留職停薪人員</a>
+  					<a href="#" class="nav-link" onclick="alert('改版中，請稍待!!')">留職停薪人員</a>
   				</li>
   			</ul>
   		</div>
@@ -41,23 +35,23 @@
 	    <form>
 	    	<div class="form-group">
 	    		<label for="date_appointment" class="col-form-label">任職(官)日期</label>
-	    		<input id="date_appointment" class='form-control' type="date" placeholder="請輸入您的任職(官)日期。">
+	    		<input id="date_appointment" class='form-control' type="text" placeholder="請輸入您的任職(官)日期。">
 	    	</div>
 	    	<div class="form-group">
 	    		<label for="date_specialbreak" class="col-form-label">慰休年度</label>
-	    		<input id="date_specialbreak" class='form-control' type="date" placeholder="請輸入想計算哪一年的慰勞假天數。">
+	    		<input id="date_specialbreak" class='form-control' type="text" placeholder="請輸入想計算哪一年的慰勞假天數。">
 	    	</div>
 	    	<div class="form-group">
 	    		<label for="date" class="col-form-label">請輸入受訓日期</label>
 		    		<div class="form-group input-group input-daterange">
-					    <input type="date" class="form-control mr-sm-2" value="開訓日">
-					    <input type="date" class="form-control" value="結訓日">
+					    <input id="tranning_start" type="text" class="form-control mr-sm-2" value="開訓日">
+					    <input id="tranning_end" type="text" class="form-control" value="結訓日">
 					</div>
-	    		<button id="add_trainning" type="button" class="btn btn-success mb-3" >增加受訓日
+	    		<button id="add_trainning_id" type="button" class="btn btn-success mb-3" onclick="add_trainning()">增加受訓日
 	    		</button>
 	    		<div id="trainning_list" class="form-group"></div>
 	    	</div>
-	    	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">計算</button>
+	    	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="gobt()">計算</button>
 	    	<div class="modal fade" id="myModal">
 	    		<div class="modal-dialog">
 	    			<div class="modal-content">
@@ -68,10 +62,25 @@
 	    					</button>
 	    				</div>
 	    				<div class="modal-body">
-	    					...
+	    					<p></p>
+	    					<ul id="result_list" class="list-group">
+							  <li class="list-group-item">全年在職狀況如下：</li>
+							  <li class="list-group-item"></li>
+							  <li class="list-group-item"></li>
+							  <li class="list-group-item"></li>
+							  <li class="list-group-item"></li>
+							  <li class="list-group-item"></li>
+							  <li class="list-group-item"></li>
+							  <li class="list-group-item"></li>
+							  <li class="list-group-item"></li>
+							  <li class="list-group-item"></li>
+							  <li class="list-group-item"></li>
+							  <li class="list-group-item"></li>
+							  <li class="list-group-item"></li>
+							</ul>
 	    				</div>
 	    				<div class="modal-footer">
-	    					<button type="button" class="btn btn-primary" data-dismiss="modal">確認
+	    					<button type="button" class="btn btn-primary" data-dismiss="modal").innerHTML()">確認
 	    					</button>
 	    				</div>
 	    			</div>
@@ -80,14 +89,21 @@
 	    </form>
 	</div>
     <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script  src="https://code.jquery.com/jquery-3.3.1.min.js"  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="  crossorigin="anonymous"></script>
+	<script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+  crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    <script src="js/bootstrap-datepicker.js"></script>
-    <script src="js/bootstrap-datepicker.zh-TW.js"></script>
-    <link rel="stylesheet" href="css/bootstrap-datepicker3.min.css">
+    <link rel=stylesheet type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="js/main.js"></script>
+    <style type="text/css">
+    	@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+		* {
+		    font-family: 'Noto Sans TC';
+		}
+    </style>
   </body>
 
 </html>
