@@ -14,17 +14,17 @@
   </head>
   <body>
   	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  		<a href="#" class="navbar-brand">休假計算機</a>
+  		<a href="index.html" class="navbar-brand">休假計算機</a>
   		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#narbarCollapse">
   			<span class="navbar-toggler-icon"></span>
   		</button>
   		<div class="collapse navbar-collapse" id="narbarCollapse">
   			<ul class="navbar-nav">
   				<li class="nav-item">
-  					<a href="#" class="nav-link">一般使用者</a>
+  					<a href="common-user.html" class="nav-link">一般使用者</a>
   				</li>
   				<li class="nav-item">
-  					<a href="#" class="nav-link" onclick="alert('改版中，請稍待!!')">再入營者適用</a>
+  					<a href="reemployers.html" class="nav-link">再入營者適用</a>
   				</li>
   				<li class="nav-item">
   					<a href="#" class="nav-link" onclick="alert('改版中，請稍待!!')">留職停薪人員</a>
@@ -33,11 +33,19 @@
   		</div>
   	</nav>
   	<div class="container">
-	    <h1 class="display-4">一般使用者</h1>
+	    <h1 class="display-4">再入營者適用</h1>
 	    <form>
 	    	<div class="form-group">
-	    		<label for="date_appointment" class="col-form-label">任職(官)日期</label>
-	    		<input id="date_appointment" class='form-control' type="text" placeholder="請輸入您的任職(官)日期。">
+	    		<label for="date_johnnyraw" class="col-form-label">初次任職(官)日期</label>
+	    		<input id="date_johnnyraw" class='form-control' type="text" placeholder="請輸入您的第一次任職(官)日期。">
+	    	</div>
+	    	<div class="form-group">
+	    		<label for="date_temporarilyleave" class="col-form-label">初次退伍日期</label>
+	    		<input id="date_temporarilyleave" class='form-control' type="text" placeholder="請輸入您的第一次退伍日期。">
+	    	</div>
+	    	<div class="form-group">
+	    		<label for="date_appointment" class="col-form-label">再入營日期</label>
+	    		<input id="date_appointment" class='form-control' type="text" placeholder="請輸入您的再入營日期。">
 	    	</div>
 	    	<div class="form-group">
 	    		<label for="date_specialbreak" class="col-form-label">慰休年度</label>
@@ -57,7 +65,7 @@
 	    		</button>
 	    		<div id="trainning_list" class="form-group"></div>
 	    	</div>
-	    	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="gobt()">計算</button>
+	    	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="reemployersmain()">計算</button>
 	    	<div class="modal fade" id="myModal">
 	    		<div class="modal-dialog">
 	    			<div class="modal-content">

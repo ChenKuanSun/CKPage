@@ -75,14 +75,14 @@ $( function() {
             maxDate: 0,
             yearRange: "-100:+0"
         });
-    $( "#loginin" )//再入營的第一次任官日期選擇器
+    $( "#date_johnnyraw" )//再入營的第一次任官日期選擇器
         .datepicker({
             //顯示完整日曆
                 beforeShow: function (input, inst) {
                     inst.dpDiv.removeClass("no-calendar-here");
                 },
                 onSelect: function (dat, inst) {
-                    $('#loginout').datepicker('option', 'minDate', dat);
+                    $('#date_temporarilyleave').datepicker('option', 'minDate', dat);
                 },
             //只能選任官之後的慰修年度
             changeMonth: true,
@@ -90,7 +90,7 @@ $( function() {
             maxDate: 0,
             yearRange: "-100:+0"
         });
-    $("#loginout")//再入營的退伍日期選擇器
+    $("#date_temporarilyleave")//再入營的退伍日期選擇器
         .datepicker({
         //顯示完整日曆
             beforeShow: function (input, inst) {
@@ -138,7 +138,7 @@ $( function() {
                         //如果慰休年度為育嬰留職復職當年度，則受訓日期改為復職前的年份
                         if(yyyy1 == yyyy2){
                             ttt1 = 1;
-                            tt1 = new Date($( "#loginout" ).val());
+                            tt1 = new Date($( "#date_temporarilyleave" ).val());
                             year = tt1.getFullYear();
                         }
                         else{
@@ -221,13 +221,6 @@ function add_trainning(){ //增加受訓日期
     var div = "<div class=\"input-group mb-3\"><input type=\"text\" class=\"form-control\" value=\"" + ds + "\"><div class=\"input-group-append\"><button class=\"btn btn-outline-secondary\" name=\"list_delete\" type=\"button\">&times;</button></div></div></div>";
     $("#trainning_list").append(div);
     delete_list()
-    /*
-    var lines = $("#tfli").val().split("\n");
-    $('#tfli').val($('#tfli').val()+ds+ "\n");
-    var psconsole = $('#tfli');
-    if(psconsole.length){//自動到最後一行
-        psconsole.scrollTop(psconsole[0].scrollHeight - psconsole.height());
-    }*/
 }
 function delete_list(){//減少受訓日期
     $('button[name="list_delete"]')
@@ -297,7 +290,7 @@ function traindate(){ //在職比例程式
         }
     //如果當年度再入營，退伍前的在職月數加上
     if(p == 1){
-        temp2 = new Date($("#loginout").val());
+        temp2 = new Date($("#date_temporarilyleave").val());
         for(var i = 1; i<=(temp2.getMonth());i++){
             if(i== (temp2.getMonth())){
                 for(var j = 1; j <=(temp2.getDate());j++){
@@ -310,7 +303,7 @@ function traindate(){ //在職比例程式
                 }
             }
         }
-        temp1  = new Date($( "#loginin" ).val());
+        temp1  = new Date($( "#date_johnnyraw" ).val());
         if(temp2.getFullYear() == temp1.getFullYear()){//如果第一次入伍、退伍、再入營皆同一年的話.....再把入伍日期前面都變不在職
             for(i = 1; i<=(temp1.getMonth());i++){
                 if(i== (temp1.getMonth())){
@@ -432,7 +425,7 @@ function studydate(){ //讀取受訓資料
         }
     //如果當年度再入營，退伍前的在職月數加上
     if(p == 1){
-        temp2 = new Date($("#loginout").val());
+        temp2 = new Date($("#date_temporarilyleave").val());
         for(var i = 1; i<=(temp2.getMonth());i++){
             if(i== (temp2.getMonth())){
                 for(var j = 1; j <=(temp2.getDate());j++){
@@ -445,7 +438,7 @@ function studydate(){ //讀取受訓資料
                 }
             }
         }
-        temp1  = new Date($( "#loginin" ).val());
+        temp1  = new Date($( "#date_johnnyraw" ).val());
         if(temp2.getFullYear() == temp1.getFullYear()){//如果第一次入伍、退伍、再入營皆同一年的話.....再把入伍日期前面都變不在職
             for(i = 1; i<=(temp1.getMonth());i++){
                 if(i== (temp1.getMonth())){
@@ -563,7 +556,7 @@ function halfday(m){
     }
     return m;
 }
-function gobt(){/*一般使用者主程式*/
+function common_usermain(){/*一般使用者主程式*/
     //讀取任官日計算年資
     var sd = new Date($( "#date_appointment" ).val());
     var d = sd.getDate();
@@ -611,14 +604,8 @@ function gobt(){/*一般使用者主程式*/
             $('.modal-body>p').append("你的慰勞假天數是" + da +"X"+d+"/12="+ m +"天(未滿半天以半天計，超過半天以一天計)");
         }
     $('.modal-body>p').append("共可請領休假補助費"+ showmethemoney(m) + "元");
-    //點擊關閉視窗
-    $(".banner > span").on('click',function(){
-        $(this).stop(true).animate({opacity: 0,zIndex: 0}, 1);
-    });
 }
-function resgobt(){/*再入營計算機主程式*/
-    //浮現視窗
-    $(".banner > span").stop(true).animate({opacity: 1,zIndex: 3}, 1);
+function reemployersmain(){/*再入營計算機主程式*/
     //讀取任官日計算年資(只到月數不計算天數)
     var sd = new Date($( "#date_appointment" ).val());
     var d = sd.getDate();
@@ -629,8 +616,8 @@ function resgobt(){/*再入營計算機主程式*/
     var ey = od.getFullYear();
     var Howyouold = (ey - 1 - y) * 12 + 12 - m;
     //加上前一春年資(只到月數不計算天數)
-    var rst = new Date($( "#loginin" ).val());
-    var rend = new Date($( "#loginout" ).val());
+    var rst = new Date($( "#date_johnnyraw" ).val());
+    var rend = new Date($( "#date_temporarilyleave" ).val());
     var rsty = rst.getFullYear();
     var rstm = rst.getMonth();
     var rendy = rend.getFullYear();
@@ -643,20 +630,20 @@ function resgobt(){/*再入營計算機主程式*/
         p = 1;
     }
     //顯示再入營日
-    $('#info1').val("貴倌"+y+"年"+m+"月"+d+"日再入營。")
+    $('.modal-body>p').html("貴倌"+y+"年"+m+"月"+d+"日再入營。")
     d = Math.floor(Howyouold/12);
     m = Howyouold%12;
     //顯示年資
-    $('#info1').val($('#info1').val() + "至去年底為止總年資共計"+d+"年");
+    $('.modal-body>p').append("至去年底為止年資共計"+ d +"年");
     if(m != 0){
-        $('#info1').val($('#info1').val() + m +"個月。");
+        $('.modal-body>p').append( m +"個月。");
     }
     else{
-        $('#info1').val($('#info1').val() +"。");
+        $('.modal-body>p').append("。");
     }
     //因應法規修訂106年除初官再入營者以外皆有完整慰休天數---20170725
         if(ey==2017 && y != 2016){
-            $('#info1').val($('#info1').val() +"因法規於106年修訂，除初官或前一年再入營者以外皆有完整慰勞假天數"+da+"天。");
+            $('.modal-body>p').append("因法規於106年修訂，除初官或前一年再入營者以外皆有完整慰勞假天數"+da+"天。");
             m = da;
         }
         else{
@@ -666,13 +653,9 @@ function resgobt(){/*再入營計算機主程式*/
             m = (da*d/12);
             //未滿半天及超過半天處理
             m = halfday(m);
-            $('#info1').val($('#info1').val() +"你的慰勞假天數是" + da +"X"+d+"/12="+ m +"天(未滿半天以半天計，超過半天以一天計)");
+            $('.modal-body>p').append("你的慰勞假天數是" + da +"X"+d+"/12="+ m +"天(未滿半天以半天計，超過半天以一天計)");
         }
-    $('#info1').val($('#info1').val() +"共可請領休假補助費"+ showmethemoney(m) + "元");
-    //點擊關閉視窗
-    $(".banner > span").on('click',function(){
-        $(this).stop(true).animate({opacity: 0,zIndex: 0}, 1);
-    });
+    $('.modal-body>p').append("共可請領休假補助費"+ showmethemoney(m) + "元");
 }
 function study(){/*留職計算機主程式*/
     //浮現視窗
@@ -699,8 +682,8 @@ function study(){/*留職計算機主程式*/
         var ey = od.getFullYear();
         var Howyouold = (ey - 1 - y) * 12 + 12 - m;
         //加上停薪前年資
-        var rst = new Date($( "#loginin" ).val());
-        var rend = new Date($( "#loginout" ).val());
+        var rst = new Date($( "#date_johnnyraw" ).val());
+        var rend = new Date($( "#date_temporarilyleave" ).val());
         var rsty = rst.getFullYear();
         var rstm = rst.getMonth();
         var rendy = rend.getFullYear();
@@ -745,12 +728,12 @@ function study(){/*留職計算機主程式*/
         $(this).stop(true).animate({opacity: 0,zIndex: 0}, 1);
     });
 }
-jQuery(function () {
-        jQuery("#checklist").click(function () {
-            if (jQuery(this).is(":checked")) {
-                jQuery("#train_list").show();
+$(function () {
+        $("#checklist").click(function () {
+            if ($(this).is(":checked")) {
+                $("#train_list").show();
             } else {
-                jQuery("#train_list").hide();
+                $("#train_list").hide();
             }
         });
     });
