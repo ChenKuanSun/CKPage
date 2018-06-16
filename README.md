@@ -1,5 +1,11 @@
+<p align="center">
+  <img src="http://cksunpage.com/logo.jpg">
+</p>
+
+* * *
 # [休假計算機網頁]
 * * *
+
 CK's Side Project
 
 這是基於[國軍軍官士官請假規則]的網頁。
