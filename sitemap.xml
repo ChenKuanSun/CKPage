@@ -9,17 +9,22 @@
 
 <url>
   <loc>http://cksunpage.com/</loc>
-  <lastmod>2018-06-15T13:48:34+00:00</lastmod>
+  <lastmod>2018-06-18T13:20:59+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>http://cksunpage.com/common-user.html</loc>
-  <lastmod>2018-06-15T13:48:34+00:00</lastmod>
+  <lastmod>2018-06-18T13:20:59+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://cksunpage.com/reemployers.html</loc>
-  <lastmod>2018-06-15T13:48:34+00:00</lastmod>
+  <lastmod>2018-06-18T13:20:59+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://cksunpage.com/leave-without-pay.html</loc>
+  <lastmod>2018-06-18T13:20:59+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 
