@@ -365,16 +365,17 @@ function studydate(){ //停薪在職比例程式
     for(var l =1; l<=12; l++){
          adat[l] = new Array();
     }
-    if(ttt1 == 1){//復職當年度慰休為停職前的在職比例------------------20170725至此
+    /*if(ttt1 == 1){//復職當年度慰休為停職前的在職比例------------------20170725至此
 
     }
     var temp1 = new Date($( "#date_appointment" ).val());
     var temp2  = new Date($( "#date_specialbreak" ).val());
     var fy = temp1.getFullYear();
     var z = temp2.getFullYear();
+    
     else{
         z--;
-    }
+    }*/
     //全年算在職，初倌就是任官前不在職
     //初官就是任職後先算都在職
         if(fy == z){
