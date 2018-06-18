@@ -4,8 +4,6 @@ var p = 0;
 var h = 0;
 //判斷是否在育嬰頁面
 var studying = 0;
-//判斷慰休年度是否為育嬰留職復職當年度 保留修改用
-var ttt1 = 0;
 
 ( function( factory ) {
     if ( typeof define === "function" && define.amd ) {
