@@ -9,7 +9,7 @@
 
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <title>國軍非官方慰勞假計算網頁</title>
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<script>
@@ -40,18 +40,23 @@
   		</div>
   	</nav>
   	<div class="container">
-	    <h1 class="display-4 mt-2">再入營者適用</h1>
+	    <h1 class="display-4 mt-2">留職停薪者適用</h1>
 	    <form>
+	    	<div class="form-group input-group">
+					<button id="babybt" type="button" class="btn col mr-2 btn-primary">育嬰</button> 
+					<button id="stuybt" type="button" class="btn col btn-secondary">讀書</button> 
+			</div>
+
 	    	<div class="form-group">
-	    		<label for="date_johnnyraw" class="col-form-label">初次任職(官)日期</label>
+	    		<label for="date_johnnyraw" class="col-form-label">任職(官)日期</label>
 	    		<input id="date_johnnyraw" class='form-control' type="text" placeholder="請輸入您的第一次任職(官)日期。(20XX/XX/XX)">
 	    	</div>
 	    	<div class="form-group">
-	    		<label for="date_temporarilyleave" class="col-form-label">初次退伍日期</label>
+	    		<label for="date_temporarilyleave" class="col-form-label">研讀、育嬰生效日期</label>
 	    		<input id="date_temporarilyleave" class='form-control' type="text" placeholder="請輸入您的第一次退伍日期。(20XX/XX/XX)">
 	    	</div>
 	    	<div class="form-group">
-	    		<label for="date_appointment" class="col-form-label">再入營日期</label>
+	    		<label for="date_appointment" class="col-form-label">復職日期</label>
 	    		<input id="date_appointment" class='form-control' type="text" placeholder="請輸入您的再入營日期。(20XX/XX/XX)">
 	    	</div>
 	    	<div class="form-group">
@@ -72,8 +77,8 @@
 	    		</button>
 	    		<div id="trainning_list" class="form-group"></div>
 	    	</div>
-	    	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="reemployersmain()">計算</button>
-	    	<div class="modal fade" id="myModal">
+	    	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="alert('修正中，請稍待!!')">計算</button>
+	    	<!--div class="modal fade" id="myModal">
 	    		<div class="modal-dialog">
 	    			<div class="modal-content">
 	    				<div class="modal-header">
@@ -106,7 +111,7 @@
 	    				</div>
 	    			</div>
 	    		</div>
-	    	</div>
+	    	</div-->
 	    </form>
 	</div>
     <!-- Optional JavaScript -->
