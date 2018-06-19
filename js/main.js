@@ -2,8 +2,6 @@
 var p = 0;
 //判斷育嬰還是念書用的KEY 預設為育嬰h=0
 var h = 0;
-//判斷是否在育嬰頁面
-var studying = 0;
 
 ( function( factory ) {
     if ( typeof define === "function" && define.amd ) {
@@ -161,6 +159,13 @@ $( function() {
         $('#babybt').attr('class','btn col mr-2 btn-secondary');
         $('#stuybt').attr('class','btn col btn-primary');
         h=1;
+    });
+    $("#checklist").click(function () {
+        if ($(this).is(":checked")) {
+            $("#train_list").show();
+        } else {
+            $("#train_list").hide();
+        }
     });
 });
 function add_trainning(){ //增加受訓日期
@@ -493,7 +498,7 @@ function reemployersmain(){/*再入營計算機主程式*/
 function leave_without_paymain(){  /*留職計算機主程式*/
     //讀取任官日年資(只到月數不計算天數)
     if(h == 1){   //進修人員年資累計
-        var sd = new Date($( "#date_appointment" ).val());
+        var sd = new Date($( "#date_johnnyraw" ).val());
         var d = sd.getDate();
         var m =  sd.getMonth();
         m += 1;
@@ -523,11 +528,11 @@ function leave_without_paymain(){  /*留職計算機主程式*/
     }
     //年資換算慰休
     var da = dayrule(Howyouold);
-    //如果當年是再入營者標記
+    //如果當年復職標記
     if(rendy == y){
         p = 1;
     }
-    //顯示再入營日
+    //顯示再復職日
     $('.modal-body>p').html("貴倌"+y+"年"+m+"月"+d+"日復職。")
     d = Math.floor(Howyouold/12);
     m = Howyouold%12;
@@ -539,28 +544,19 @@ function leave_without_paymain(){  /*留職計算機主程式*/
     else{
         $('.modal-body>p').append("。");
     }
-    //因應法規修訂106年復職者皆有完整慰休天數---20170725 停職此段有爭議，並因為日期已過，不再朔及既往，直接刪除這段
-    //    if(ey==2017){
-    //        $('#info1').val($('#info1').val() +"因法規於106年修訂，106年度復職者皆有完整慰勞假天數"+da+"天。");
-    //        m = da;
-    //    }
-    //    else{
-    //讀取在職月數
-    d = traindate();  
-    //天數*比例
-    m = (da*d/12);
-    //未滿半天及超過半天處理
-    m = halfday(m);
-    $('.modal-body>p').append("你的慰勞假天數是" + da +"X"+d+"/12="+ m +"天(未滿半天以半天計，超過半天以一天計)");
-    //    }
-    $('.modal-body>p').append("共可請領休假補助費"+ showmethemoney(m) + "元");
+    if(ey==2017){
+        $('.modal-body>p').append("因法規於106年修訂，除初官或前一年再入營者以外皆有完整慰勞假天數"+da+"天。");
+        m = da;
+    }
+    else{
+        //讀取在職月數
+        d = traindate();  
+        //天數*比例
+        m = (da*d/12);
+        //未滿半天及超過半天處理
+        m = halfday(m);
+        $('.modal-body>p').append("你的慰勞假天數是" + da +"X"+d+"/12="+ m +"天(未滿半天以半天計，超過半天以一天計)");
+        //    }
+        $('.modal-body>p').append("共可請領休假補助費"+ showmethemoney(m) + "元");
+    }
 }
-$(function () {
-        $("#checklist").click(function () {
-            if ($(this).is(":checked")) {
-                $("#train_list").show();
-            } else {
-                $("#train_list").hide();
-            }
-        });
-    });
