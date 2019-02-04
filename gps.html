@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GPS距離計算機</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script src="https://cdn.rawgit.com/chrisveness/geodesy/v1.1.3/vector3d.js"></script>
+    <script src="https://cdn.rawgit.com/chrisveness/geodesy/v1.1.3/latlon-ellipsoidal.js"></script>
+    <script src="https://cdn.rawgit.com/chrisveness/geodesy/v1.1.3/latlon-vincenty.js"></script>
+    <script src="https://cdn.rawgit.com/chrisveness/geodesy/v1.1.3/dms.js"></script>
+    <script type="text/javascript">
+        function compute() {
+            var mixlat1 = $('input[name=lat1-1]').val() + '° ' + $('input[name=lat1-2]').val() + '′ ' + $('input[name=lat1-3]').val() + '.' + $('input[name=lat1-4]').val() + '″N'
+            var mixlon1 = $('input[name=lon1-1]').val() + '° ' + $('input[name=lon1-2]').val() + '′ ' + $('input[name=lon1-3]').val() + '.' + $('input[name=lon1-4]').val() + '″E'
+            var mixlat2 = $('input[name=lat2-1]').val() + '° ' + $('input[name=lat2-2]').val() + '′ ' + $('input[name=lat2-3]').val() + '.' + $('input[name=lat2-4]').val() + '″N'
+            var mixlon2 = $('input[name=lon2-1]').val() + '° ' + $('input[name=lon2-2]').val() + '′ ' + $('input[name=lon2-3]').val() + '.' + $('input[name=lon2-4]').val() + '″E'
+            var lat1 = Dms.parseDMS(mixlat1);
+            var lon1 = Dms.parseDMS(mixlon1);
+            var lat2 = Dms.parseDMS(mixlat2);
+            var lon2 = Dms.parseDMS(mixlon2);
+            var p1 = new LatLon(lat1, lon1);
+            var p2 = new LatLon(lat2, lon2);
+            var d = p1.distanceTo(p2);
+            var brng1 = p1.initialBearingTo(p2);
+            var brng2 = p1.finalBearingTo(p2);
+            $('#outp').html(d==NaN ? '請輸入有效的座標' : d.toLocaleString('zh-tw').toString());
+            //$('.inverse output[name=bearing-init]').html(Dms.toBrng(brng1, 'dms', 2));
+            //$('.inverse output[name=bearing-final]').html(Dms.toBrng(brng2, 'dms', 2));
+        };     
+        $(function() {
+            $(".inputs").keyup(function () {
+                if (this.value.length == this.maxLength) {
+                  var $next = $(this).next('.inputs');
+                  if ($next.length)
+                      $(this).next('.inputs').focus();
+                  else
+                      $(this).blur();
+                }
+            });
+        });
+    </script>
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/earlyaccess/notosanstc.css');
+        html, body{
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 16px;
+            color:#DFDFDF;
+            background-color: #202020;
+            display: flex;
+            flex-flow:column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1{
+            font-size: 28px;
+        }
+        h2{
+            margin: 10px;
+            font-size: 24px;
+        }
+        input{
+            margin: 0 5px 0 5px;
+            width: 36px;
+            border-radius: 3px;
+        }
+        div{
+            padding: 5px;
+            background-color: #505050;
+            border-radius: 3px;
+        }
+        .card-1, .card-2, .card-3{
+            margin: 10px;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            width: 90%;
+            background-color: #505050;
+            border-radius: 10px;
+            padding: 10px;
+        }
+        button{
+            background-color: #0078e7;
+            font-size: 24px;
+            border: none;
+            color:#DFDFDF;
+            border-radius: 5px;
+            width: 80%;
+        }
+         @media only screen and (max-width: 414px) {
+            .card-1, .card-2, .card-3{
+                width: 100%;
+                background-color: #505050;
+                border-radius: 10px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>GPS距離計算機</h1>
+    <div class="card-1">
+        <h2>起始點</h2>
+        <div>
+            <label>北緯</label>
+            <input class="inputs" type="text" name="lat1-1" maxlength="3"/>度<input class="inputs" type="text" name="lat1-2" maxlength="2"/>分<input class="inputs" type="text" name="lat1-3" maxlength="2">秒<input class="inputs" type="text" name="lat1-4" maxlength="2">
+        </div>
+        <div>
+            <label>東經</label>
+            <input class="inputs" type="text" name="lon1-1" maxlength="3">度<input class="inputs" type="text" name="lon1-2" maxlength="2">分<input class="inputs" type="text" name="lon1-3" maxlength="2">秒<input class="inputs" type="text" name="lon1-4" maxlength="2">
+        </div>
+    </div>
+    <div class="card-2">
+        <h2>終點</h2>
+        <div> 
+            <label>北緯</label>
+            <input class="inputs" type="text" name="lat2-1" maxlength="3">度<input class="inputs" type="text" name="lat2-2" maxlength="2">分<input class="inputs" type="text" name="lat2-3" maxlength="2">秒<input class="inputs" type="text" name="lat2-4" maxlength="2">
+        </div>
+        <div>
+            <label>東經</label>
+            <input class="inputs" type="text" name="lon2-1" maxlength="3">度<input class="inputs" type="text" name="lon2-2" maxlength="2">分<input class="inputs" type="text" name="lon2-3" maxlength="2">秒<input class="inputs" type="text" name="lon2-4" maxlength="2">
+        </div>
+    </div>
+    <div class="card-2">
+        <button onclick="compute();">計算</button>
+        <h2>計算結果距離</h2>
+        <h2 id="outp"></h2>
+        <h2>公尺</h2>
+    </div>
+</body>
+</html>
