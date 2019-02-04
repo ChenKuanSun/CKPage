@@ -86,12 +86,17 @@
             border-radius: 5px;
             width: 80%;
         }
-         @media only screen and (max-width: 414px) {
+        @media only screen and (max-width: 414px) {
             .card-1, .card-2, .card-3{
                 width: 100%;
                 background-color: #505050;
                 border-radius: 10px;
                 padding: 10px;
+            }
+            input{
+            margin: 0 5px 0 5px;
+            width: 24px;
+            border-radius: 3px;
             }
         }
     </style>
@@ -102,22 +107,22 @@
         <h2>起始點</h2>
         <div>
             <label>北緯</label>
-            <input class="inputs" type="text" name="lat1-1" maxlength="3"/>度<input class="inputs" type="text" name="lat1-2" maxlength="2"/>分<input class="inputs" type="text" name="lat1-3" maxlength="2">秒<input class="inputs" type="text" name="lat1-4" maxlength="2">
+            <input class="inputs" type="number" name="lat1-1" maxlength="3"/>度<input class="inputs" type="number" name="lat1-2" maxlength="2"/>分<input class="inputs" type="number" name="lat1-3" maxlength="2">秒<input class="inputs" type="number" name="lat1-4" maxlength="2">
         </div>
         <div>
             <label>東經</label>
-            <input class="inputs" type="text" name="lon1-1" maxlength="3">度<input class="inputs" type="text" name="lon1-2" maxlength="2">分<input class="inputs" type="text" name="lon1-3" maxlength="2">秒<input class="inputs" type="text" name="lon1-4" maxlength="2">
+            <input class="inputs" type="number" name="lon1-1" maxlength="3">度<input class="inputs" type="number" name="lon1-2" maxlength="2">分<input class="inputs" type="number" name="lon1-3" maxlength="2">秒<input class="inputs" type="number" name="lon1-4" maxlength="2">
         </div>
     </div>
     <div class="card-2">
         <h2>終點</h2>
         <div> 
             <label>北緯</label>
-            <input class="inputs" type="text" name="lat2-1" maxlength="3">度<input class="inputs" type="text" name="lat2-2" maxlength="2">分<input class="inputs" type="text" name="lat2-3" maxlength="2">秒<input class="inputs" type="text" name="lat2-4" maxlength="2">
+            <input class="inputs" type="number" name="lat2-1" maxlength="3">度<input class="inputs" type="number" name="lat2-2" maxlength="2">分<input class="inputs" type="number" name="lat2-3" maxlength="2">秒<input class="inputs" type="number" name="lat2-4" maxlength="2">
         </div>
         <div>
             <label>東經</label>
-            <input class="inputs" type="text" name="lon2-1" maxlength="3">度<input class="inputs" type="text" name="lon2-2" maxlength="2">分<input class="inputs" type="text" name="lon2-3" maxlength="2">秒<input class="inputs" type="text" name="lon2-4" maxlength="2">
+            <input class="inputs" type="number" name="lon2-1" maxlength="3">度<input class="inputs" type="number" name="lon2-2" maxlength="2">分<input class="inputs" type="number" name="lon2-3" maxlength="2">秒<input class="inputs" type="number" name="lon2-4" maxlength="2">
         </div>
     </div>
     <div class="card-2">
