@@ -27,6 +27,10 @@
             //$('.inverse output[name=bearing-init]').html(Dms.toBrng(brng1, 'dms', 2));
             //$('.inverse output[name=bearing-final]').html(Dms.toBrng(brng2, 'dms', 2));
         };     
+        function clearvalue(){
+            $('.card-2 input').val("");
+            $('#outp').html("");
+        }
         $(function() {
             $(".inputs").keyup(function () {
                 if (this.value.length == this.maxLength) {
@@ -43,7 +47,7 @@
         @import url('https://fonts.googleapis.com/earlyaccess/notosanstc.css');
         html, body{
             font-family: 'Noto Sans TC', sans-serif;
-            font-size: 16px;
+            font-size: 20px;
             color:#DFDFDF;
             background-color: #202020;
             display: flex;
@@ -130,6 +134,7 @@
         <h2>計算結果距離</h2>
         <h2 id="outp"></h2>
         <h2>公尺</h2>
+        <button onclick="clearvalue();">清空終點</button>
     </div>
 </body>
 </html>
